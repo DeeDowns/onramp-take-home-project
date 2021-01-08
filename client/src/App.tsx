@@ -5,6 +5,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import BlogFeed from './components/BlogFeed'
 import AddPost from './components/AddPost'
+import Favorites from './components/Favorites'
 
 const App: React.FC =() => {
   return (
@@ -12,12 +13,18 @@ const App: React.FC =() => {
       <NavBar />
 
       <Switch>
-        <Route path='/'>
-          <BlogFeed />
-        </Route>
+       
 
         <Route path='/add-post'>
           <AddPost />
+        </Route>
+
+        <Route path='/favorites'>
+          <Favorites />
+        </Route>
+
+        <Route path='/'>
+          <BlogFeed />
         </Route>
 
       </Switch>
