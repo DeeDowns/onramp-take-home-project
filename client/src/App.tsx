@@ -4,6 +4,7 @@ import './App.css';
 
 import NavBar from './components/NavBar'
 import BlogFeed from './components/BlogFeed'
+import AddPost from './components/AddPost'
 
 const App: React.FC =() => {
   return (
@@ -11,8 +12,12 @@ const App: React.FC =() => {
       <NavBar />
 
       <Switch>
-        <Route>
+        <Route path='/'>
           <BlogFeed />
+        </Route>
+
+        <Route path='/add-post'>
+          <AddPost />
         </Route>
 
       </Switch>
