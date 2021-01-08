@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 
+const blogPostRoutes = require('../api/blog-feed/blogPosts')
+
 const app = express()
 
 app.use(helmet())
@@ -9,16 +11,20 @@ app.use(cors())
 app.use(express.json())
 app.use(logger)
 
-// app.use('/feed', feedRouter)
+app.use('/feed', blogPostRoutes)
 
-app.get('/', (req, res) => {
+// app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+//     res.status(500).json({ message: err.message})
+// })
+
+app.get('/', (req:express.Request, res:express.Response) => {
     res.status(200).json({ Welcome: 'OnRamp Take-Home Project Blog Server'})
 })
 
 
-function logger(req: express.Request, res: express.Response, next: Function):void {
+function logger (req: express.Request, res: express.Response, next: express.NextFunction):void {
     console.log(`a ${req.method} request was made to ${req.url}`)
     next()
 }
 
-module.exports = app
+export default app

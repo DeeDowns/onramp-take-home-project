@@ -1,5 +1,4 @@
-const app = require('./api/app')
-
+import app from './api/app'
 
 const port = process.env.PORT || 4000
 
