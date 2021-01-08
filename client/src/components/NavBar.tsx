@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import SearchBar from './SearchBar'
+import NavLinks from './NavLinks'
 
 const NavBar: React.FC = () => {
     
 
     return (
-        <div>
-
-        </div>
+        <nav>
+            <SearchBar />
+            <NavLinks />
+        </nav>
     )
 }
 

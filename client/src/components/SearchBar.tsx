@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
 
-
-
 const SearchBar: React.FC = () => {
-    const [searchinput, setSearchInput] = useState<string>('')
+    const [searchInput, setSearchInput] = useState<string>('')
 
     const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(event.currentTarget.value)
     }
 
-    const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSearchSubmit = (event: React.FormEvent) => {
         event.preventDefault()
-        console.log(setSearchInput)
+        console.log(searchInput)
         setSearchInput('')
     }
 
@@ -24,8 +22,7 @@ const SearchBar: React.FC = () => {
                 name='search-bar'
                 id='search-bar'
                 value={searchInput}
-                onChange={onSearchInputChange}
-                // ref={searchInputRef}
+                onChange={handleSearchInputChange}
                 />
             </label>
             <button>Search</button>
