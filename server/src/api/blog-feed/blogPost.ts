@@ -1,8 +1,8 @@
 import express from 'express'
 
-const router = express.Router()
+const blogPostRouter = express.Router()
 
-router.get('/', (req: express.Request, res:express.Response) => {
+blogPostRouter.get('/', (req: express.Request, res:express.Response) => {
     /*Posts.allPosts()
         .then(posts => {
             console.log(posts)
@@ -16,10 +16,10 @@ router.get('/', (req: express.Request, res:express.Response) => {
    res.status(200).json({  message: 'all blog posts'})
 })
 
-router.post('/')
+blogPostRouter.post('/')
 
-router.put('/:id')
+blogPostRouter.put('/:id')
 
-router.delete('/:id')
+blogPostRouter.delete('/:id')
 
-export default router
+export default blogPostRouter

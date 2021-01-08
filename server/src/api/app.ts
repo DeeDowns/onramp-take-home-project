@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 
-const blogPostRoutes = require('../api/blog-feed/blogPosts')
+import blogPostRouter from './blog-feed/blogPost'
 
 const app = express()
 
@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use(logger)
 
-app.use('/feed', blogPostRoutes)
+app.use('/feed', blogPostRouter)
 
 // app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
 //     res.status(500).json({ message: err.message})
