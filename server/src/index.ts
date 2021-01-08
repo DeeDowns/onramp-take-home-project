@@ -1,8 +1,8 @@
-const express = require('express')
-const app = express()
+const app = require('./api/app')
 
-const port = 4000
+
+const port = process.env.PORT || 4000
 
 app.listen( port, () => {
-    console.log(`server up`)
+    console.log(`server up on port ${port}`)
 })
