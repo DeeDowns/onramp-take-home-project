@@ -4,10 +4,6 @@ import bycrypt from 'bcryptjs'
 
 const router = Router()
 
-// router.get('/', (req: Request, res: Response) => {
-
-// })
-
 router.post('/', (req: Request, res: Response) => {
     // check req body
     console.log(req.body.username, req.body.password, req.body.email)
@@ -20,6 +16,7 @@ router.post('/', (req: Request, res: Response) => {
     .insert({username: req.body.username, password: req.body.password, email: req.body.email}, ['id'])
     .then((user: any) => {
         res.send(user)
+        res.status(200)
     })
     
 })
