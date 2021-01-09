@@ -1,26 +1,11 @@
 import 'reflect-metadata'
-import express from 'express'
-import cors from 'cors'
-import helmet from 'helmet'
-import bodyParser from 'body-parser'
-import { Server } from 'typescript-rest'
-import dbconnection from './dbConnection'
+import {createConnection} from "typeorm";
 
+import app from './app'
 
-// import {createConnection} from "typeorm";
-// import {User} from "./entity/User";
+let port = Number(process.env.PORT) || 4003
 
-export const app: express.Application = express()
-app.use(cors())
-app.use(helmet())
-app.use(bodyParser.json())
-
-
-Server.buildServices(app)
-
-let port = Number(process.env.PORT) || 4000
-
-dbconnection
+createConnection()
     .then(() => {
         app.listen(port, () => {
             console.log(`server running on port ${port}`)})
