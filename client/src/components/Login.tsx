@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { userLogin } from '../store/actions/userActions'
 
 const initialCredInputs = {
     username: '',
     password: ''
 }
 
-const Login: React.FC = () =>  {
+const Login: React.FC = (props:any) =>  {
     const [credInputs, setCredInputs] = useState<{username: string; password: string}>(initialCredInputs)
     const history = useHistory()
 
@@ -20,18 +21,9 @@ const Login: React.FC = () =>  {
 
     const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(credInputs)
-        axios.post('http://localhost:4003/login', credInputs)
-        .then( (res: any) => {
-            console.log(res)
-            // history.push('/feed') 
-        })
-        .catch((err:any) => {
-            console.log(err.message, err.name)
-        })
+        props.userLogin(credInputs)
         setCredInputs(initialCredInputs)
-
-
+        history.push('/')
     }
     return (
         <form onSubmit={handleLoginSubmit}>
@@ -60,4 +52,13 @@ const Login: React.FC = () =>  {
 
 }
 
-export default Login
+const mapStateToProps = (state: any) => {
+    console.log(state)
+    return {
+        user: state.userReducer.user,
+        isLoading: state.userReducer.isLoading,
+        error: state.userReducer.error
+    }
+}
+
+export default connect(mapStateToProps, { userLogin })(Login) 

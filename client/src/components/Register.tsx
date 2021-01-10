@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { registerNewUser } from '../store/actions/userActions'
+
+
 
 const initialRegInputs = {
     username: '',
@@ -8,7 +11,7 @@ const initialRegInputs = {
     password: ''
 }
 
-const Register: React.FC = () =>  {
+const Register: React.FC = (props:any) =>  {
     const [regInputs, setRegInputs] = useState<{username: string; email: string; password: string}>(initialRegInputs)
     const history = useHistory()
 
@@ -21,15 +24,8 @@ const Register: React.FC = () =>  {
 
     const handleRegSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(regInputs)
-        axios.post('http://localhost:4003/users', regInputs)
-        .then( (res: any) => {
-            console.log(res.data)
-            history.push('/login') 
-        })
-        .catch((err:any) => {
-            console.log(err.message, err.name)
-        })
+        props.registerNewUser(regInputs)
+        history.push('/login') 
         setRegInputs(initialRegInputs)
         
 
@@ -71,4 +67,13 @@ const Register: React.FC = () =>  {
 
 }
 
-export default Register
+const mapStateToProps = (state: any) => {
+    console.log(state)
+    return {
+        user: state.userReducer.user,
+        isLoading: state.userReducer.isLoading,
+        error: state.userReducer.error
+    }
+}
+
+export default connect(mapStateToProps, { registerNewUser })(Register) 
