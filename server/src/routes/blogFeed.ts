@@ -1,6 +1,8 @@
 import { Router,  Request, Response } from 'express' 
 import db from '../db'
+// import makeJwt from '../makeJwt'
 // import jwt from 'jsonwebtoken'
+import authMw from '../middleware/authMw'
 
 const router = Router()
 
@@ -32,13 +34,12 @@ router.get('/:id', (req: Request, res: Response) => {
     })
 })
 
-router.post('/', (req: Request, _res: Response) => {
-    const { title, content, userId } = req.body
+router.post('/', authMw, (req: any, _res: any) => {
+   
+    const { subject } = req.user
+    let { title, content } = req.body
     db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.title', 'post.content', 'user.id')
-    .insert( { title, content, userId: 'user.id'}, ['id'] )
-    .where({ 'user.id': userId})
+    .insert({title: title, content: content, userId: subject }, ['id'] )
     .then((blogPost: any) => {
         console.log(blogPost)
     })
@@ -48,7 +49,7 @@ router.post('/', (req: Request, _res: Response) => {
 
 })
 
-router.put('/:id', (req: Request, _res: Response) => {
+router.put('/:id', authMw, (req: Request, _res: Response) => {
     const { id } = req.params
     const changes = req.body
     db('post')
