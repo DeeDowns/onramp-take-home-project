@@ -24,7 +24,7 @@ const Login: React.FC = () =>  {
         axios.post('http://localhost:4003/login', credInputs)
         .then( (res: any) => {
             console.log(res)
-            history.push('/feed') 
+            // history.push('/feed') 
         })
         .catch((err:any) => {
             console.log(err.message, err.name)
@@ -54,7 +54,7 @@ const Login: React.FC = () =>  {
                     onChange={handleCredChange}
                 />
             </label>
-            <button>Sign-Up</button>
+            <button>Sign-in</button>
         </form>
     )
 
