@@ -13,7 +13,7 @@ const BlogPost: React.FC = (props:any) => {
         props.fetchBlogPostById(id)
     }, [id])
 
-    console.log(props.blogPost[0].title)
+    console.log('BLOG-POST-PROPS',props.blogPost[0])
 
     return (
         <div>
