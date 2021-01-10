@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { Dispatch } from 'redux'
 
 export const FETCH_POST_START = 'FETCH_POST_START'
@@ -9,7 +9,7 @@ export const POST_NEW_BLOG_POST_SUCCESS = 'POST_NEW_BLOG_POST_SUCCESS'
 
 export const fetchBlogPosts = () => (dispatch:Dispatch) => {
     dispatch({ type: FETCH_POST_START})
-    axios.get('http://localhost:4003/feed')
+    axiosWithAuth().get('/feed')
     .then((res:any) => {
         console.log(res.data)
         dispatch({ type: FETCH_POST_SUCCESS, payload: res.data})
@@ -19,9 +19,9 @@ export const fetchBlogPosts = () => (dispatch:Dispatch) => {
     })
 }
 
-export const fetchBlogPostsById = (id:number) => (dispatch:Dispatch) => {
+export const fetchBlogPostById = (id:number) => (dispatch:Dispatch) => {
     dispatch({ type: FETCH_POST_START})
-    axios.get(`http://localhost:4003/feed/${id}`)
+    axiosWithAuth().get(`/feed/${id}`)
     .then((res:any) => {
         console.log(res.data)
         dispatch({ type: FETCH_POST_BY_ID_SUCCESS, payload: res.data})
@@ -32,9 +32,9 @@ export const fetchBlogPostsById = (id:number) => (dispatch:Dispatch) => {
 }
 
 
-export const creatNewBlogPosts = (newPost:any) => (dispatch:Dispatch) => {
+export const createNewBlogPost = (newPost:any) => (dispatch:Dispatch) => {
     dispatch({ type: FETCH_POST_START})
-    axios.get(`http://localhost:4003/feed/`, newPost)
+    axiosWithAuth().get(`/feed`, newPost)
     .then((res:any) => {
         console.log(res.data)
         dispatch({ type: POST_NEW_BLOG_POST_SUCCESS, payload: res.data})
