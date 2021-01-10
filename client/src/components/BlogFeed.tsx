@@ -7,7 +7,7 @@ import { fetchBlogPosts, fetchBlogPostById, createNewBlogPost } from '../store/a
 
 
 const BlogFeed: React.FC = (props:any) => {
-    console.log(props)
+    console.log('PROP',props.blogPost)
    
     useEffect(() => {
         props.fetchBlogPosts()

@@ -11,6 +11,7 @@ router.get('/', (_req: Request, res: Response) => {
     db('post')
     .join('user', 'user.id', 'post.userId')
     .select('post.id', 'post.title', 'post.content', 'user.username')
+    .orderBy('id', 'desc')
     .then((posts:any) => {
         console.log(posts)
         res.status(200).json(posts)
