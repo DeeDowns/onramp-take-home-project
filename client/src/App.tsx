@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import NavBar from './components/NavBar'
+import Register from './components/Register'
 import BlogFeed from './components/BlogFeed'
 import AddPost from './components/AddPost'
 import Favorites from './components/Favorites'
@@ -13,7 +14,9 @@ const App: React.FC =() => {
       <NavBar />
 
       <Switch>
-       
+        <Route path='/register'>
+          <Register />
+        </Route>
 
         <Route path='/add-post'>
           <AddPost />
