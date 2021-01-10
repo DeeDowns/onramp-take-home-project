@@ -7,16 +7,15 @@ const router = Router()
 router.post('/', (req: Request, res: Response) => {
     // check req body
     console.log(req.body.username, req.body.password, req.body.email)
-
+    const { username, email, password } = req.body
     const credentials = req.body
     const hashPassword = bycrypt.hashSync(credentials.password, 8)
     credentials.password =hashPassword
 
     db('user')
-    .insert({username: req.body.username, password: req.body.password, email: req.body.email}, ['id'])
-    .then((user: any) => {
-        res.send(user)
-        res.status(200)
+    .insert({username: username, password: password, email: email}, ['id'])
+    .then((_user: any) => {
+        res.status(200).send('new user registered')
     })
     
 })

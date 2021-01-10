@@ -1,6 +1,9 @@
+
 import { Router,  Request, Response } from 'express' 
 import db from '../db'
+// import makeJwt from '../makeJwt'
 // import jwt from 'jsonwebtoken'
+import authMw from '../middleware/authMw'
 
 const router = Router()
 
@@ -32,15 +35,15 @@ router.get('/:id', (req: Request, res: Response) => {
     })
 })
 
-router.post('/', (req: Request, _res: Response) => {
-    const { title, content, userId } = req.body
+router.post('/', authMw, (req: any, res: any) => {
+   
+    const { subject } = req.user
+    const { title, content } = req.body
     db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.title', 'post.content', 'user.id')
-    .insert( { title, content, userId: 'user.id'}, ['id'] )
-    .where({ 'user.id': userId})
+    .insert({title: title, content: content, userId: subject }, ['id'] )
     .then((blogPost: any) => {
         console.log(blogPost)
+        res.status(201).json({ message: 'post created'})
     })
     .catch((err:any) => {
         console.log(err)
@@ -48,27 +51,39 @@ router.post('/', (req: Request, _res: Response) => {
 
 })
 
-router.put('/:id', (req: Request, _res: Response) => {
+router.put('/:id', authMw, (req: any, res: any) => {
+    const { user_name } = req.user 
     const { id } = req.params
-    const changes = req.body
+    const { title, content } = req.body
     db('post')
     .join('user', 'user.id', 'post.userId')
     .select('post.id', 'post.title', 'post.content', 'user.username')
-    .where({id})
-    .update(changes)
-    .then((updated: any) => {
-        console.log(updated)
+    .where({'post.id': id})
+    .update({ title: title, content: content, username:user_name})
+    .then((count: any) => {
+        console.log(count)
+        res.status(200).json({ message: 'post updated'})
     })
     .catch((err:any) => {
         console.log(err)
     })
+})
 
+router.delete('/:id', authMw, (req:any, res: any) => {
+    const { id } = req.params
+    db('post')
+    .where({ 'post.id': id})
+    .del()
+    .then((delCount:number) => {
+        console.log(delCount)
+        if (delCount > 0) {
+            res.status(200).json({ message: 'post deleted' })
+        }
+    })
+    .catch((err:any) => {
+        console.log(err)
+    })
 })
 
 
-
 export default router
-
-// select post.id, post.title, post.content, "user".username
-// from post
-// inner join "user" on post."userId" = "user".id;
