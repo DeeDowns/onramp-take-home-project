@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+
+import { createNewBlogPost } from '../store/actions/blogFeedActions'
 
 const initialAddPostInputs = {
     title: '',
     content: ''
 }
 
-const AddPost: React.FC = () => {
+const AddPost: React.FC = (props:any) => {
     const [addPostInputs, setAddPostInputs] = useState<{title:string; content:string}>(initialAddPostInputs)
+
+    const history = useHistory()
 
     const handleAddChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setAddPostInputs({
@@ -18,7 +24,9 @@ const AddPost: React.FC = () => {
     const handleAddSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log(addPostInputs)
-        setAddPostInputs(initialAddPostInputs)
+        props.createNewBlogPost(addPostInputs)
+        // history.push('/')
+        
     }
 
     return (
@@ -49,4 +57,14 @@ const AddPost: React.FC = () => {
     ) 
 }
 
-export default AddPost
+const mapStateToProps = (state: any) => {
+    console.log(state)
+    return {
+        feed: state.blogFeedReducer.feed,
+        blogPost: state.blogFeedReducer.blogPost,
+        isLoading: state.blogFeedReducer.isLoading,
+        error: state.blogFeedReducer.error
+    }
+}
+
+export default connect(mapStateToProps, { createNewBlogPost })(AddPost)
