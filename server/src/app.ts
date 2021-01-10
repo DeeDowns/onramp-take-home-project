@@ -18,8 +18,8 @@ app.get('/', (req: Request, res: Response) => {
     res.status(200).json({ message: 'Server Uppppp'})
 })
 
-function logger (req: Request, res: Response, next: NextFunction) {
-    console.log(`a ${req.method} was made to ${req.url} with a status code of ${res.statusCode}`)
+function logger (req: Request, _res: Response, next: NextFunction) {
+    console.log(`a ${req.method} was made to ${req.url}`)
     next()
 }
 
