@@ -13,6 +13,7 @@ function makeJwt({ id, username }: any) {
         expiresIn: '2 hours'
     }
 
+
     return jwt.sign(payload, secret.jwtSecret, options)
 }
 
