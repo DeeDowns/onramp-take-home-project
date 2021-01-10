@@ -47,5 +47,7 @@ export const blogFeedReducer = (state = initialState, action:any) => {
                 error: action.payload
         
             } 
+        default:
+            return state
     }
 }
