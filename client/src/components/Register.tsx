@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const initialRegInputs = {
@@ -9,6 +10,7 @@ const initialRegInputs = {
 
 const Register: React.FC = () =>  {
     const [regInputs, setRegInputs] = useState<{username: string; email: string; password: string}>(initialRegInputs)
+    const history = useHistory()
 
     const handleRegChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRegInputs({
@@ -23,11 +25,13 @@ const Register: React.FC = () =>  {
         axios.post('http://localhost:4003/users', regInputs)
         .then( (res: any) => {
             console.log(res.data)
+            history.push('/login') 
         })
         .catch((err:any) => {
             console.log(err.message, err.name)
         })
-        setRegInputs(initialRegInputs)  
+        setRegInputs(initialRegInputs)
+        
 
     }
     return (
