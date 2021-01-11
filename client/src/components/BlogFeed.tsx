@@ -31,7 +31,7 @@ const BlogFeed: React.FC = (props:any) => {
                 </label>
             </form>
             <h1>Feed</h1>
-            {
+            {props.feed &&
                 props.feed.filter(( post:any) => {
                     return (
                         post.title.toLowerCase().includes(searchInput.toLowerCase()) || 

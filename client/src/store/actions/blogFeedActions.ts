@@ -11,7 +11,6 @@ export const fetchBlogPosts = () => (dispatch:Dispatch) => {
     dispatch({ type: FETCH_POST_START})
     axiosWithAuth().get('/feed')
     .then((res:any) => {
-        console.log('fdfd')
         console.log(res.data)
         dispatch({ type: FETCH_POST_SUCCESS, payload: res.data})
     })
