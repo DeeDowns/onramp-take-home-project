@@ -1,17 +1,12 @@
 
 import { Router,  Request, Response } from 'express' 
-import db from '../db'
-// import makeJwt from '../makeJwt'
-// import jwt from 'jsonwebtoken'
+import {getAllPosts, findPostById,addNewPost, editPost, deletePost } from '../models/blogFeedModel'
 import authMw from '../middleware/authMw'
 
 const router = Router()
 
 router.get('/', (_req: Request, res: Response) => {
-    db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.id', 'post.title', 'post.content', 'user.username')
-    .orderBy('id', 'desc')
+    getAllPosts()
     .then((posts:any) => {
         console.log(posts)
         res.status(200).json(posts)
@@ -23,11 +18,8 @@ router.get('/', (_req: Request, res: Response) => {
 
 router.get('/:id', (req: Request, res: Response) => {
     const { id } = req.params
-    db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.id', 'post.title', 'post.content', 'user.username')
-    .where({ 'post.id': id})
-    .first()
+
+    findPostById(id)
     .then((singlePost: any) => {
         console.log(singlePost)
         res.status(200).json(singlePost)
@@ -41,8 +33,7 @@ router.post('/', authMw, (req: any, res: any) => {
    
     const { subject } = req.user
     const { title, content } = req.body
-    db('post')
-    .insert({title: title, content: content, userId: subject }, ['id'] )
+    addNewPost({title: title, content: content, userId: subject })
     .then((blogPost: any) => {
         console.log(blogPost)
         res.status(201).json({ message: 'post created'})
@@ -57,11 +48,12 @@ router.put('/:id', authMw, (req: any, res: any) => {
     const { user_name } = req.user 
     const { id } = req.params
     const { title, content } = req.body
-    db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.id', 'post.title', 'post.content', 'user.username')
-    .where({'post.id': id})
-    .update({ title: title, content: content, username:user_name})
+    // db('post')
+    // .join('user', 'user.id', 'post.userId')
+    // .select('post.id', 'post.title', 'post.content', 'user.username')
+    // .where({'post.id': id})
+    // .update({ title: title, content: content, username:user_name})
+    editPost( id, {title: title, content: content, username:user_name})
     .then((count: any) => {
         console.log(count)
         res.status(200).json({ message: 'post updated'})
@@ -73,9 +65,7 @@ router.put('/:id', authMw, (req: any, res: any) => {
 
 router.delete('/:id', authMw, (req:any, res: any) => {
     const { id } = req.params
-    db('post')
-    .where({ 'post.id': id})
-    .del()
+    deletePost(id)
     .then((delCount:number) => {
         console.log(delCount)
         if (delCount > 0) {
