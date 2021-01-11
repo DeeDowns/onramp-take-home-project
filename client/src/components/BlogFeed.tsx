@@ -42,9 +42,8 @@ const BlogFeed: React.FC = (props:any) => {
                 <div key={post.id}>
                     <h2>{post.title}</h2>
                     <h3>{post.username}</h3>
-                    <p>{post.content}</p>
                     <button>add to favorites</button>
-                    <Link to={`/post/${post.id}`}>read more</Link>
+                    <Link to={`/post/${post.id}`}>read</Link>
                 </div>
             ))}
         </div>

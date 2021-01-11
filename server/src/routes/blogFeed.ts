@@ -27,6 +27,7 @@ router.get('/:id', (req: Request, res: Response) => {
     .join('user', 'user.id', 'post.userId')
     .select('post.id', 'post.title', 'post.content', 'user.username')
     .where({ 'post.id': id})
+    .first()
     .then((singlePost: any) => {
         console.log(singlePost)
         res.status(200).json(singlePost)
