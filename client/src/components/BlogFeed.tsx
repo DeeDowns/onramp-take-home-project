@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
-
 import { fetchBlogPosts, fetchBlogPostById, createNewBlogPost } from '../store/actions/blogFeedActions'
+import SearchBar from './SearchBar'
 
 
 const BlogFeed: React.FC = (props:any) => {
@@ -12,11 +11,17 @@ const BlogFeed: React.FC = (props:any) => {
     useEffect(() => {
         props.fetchBlogPosts()
     }, [])
-    
-    
+
     return (
         <div>
             <h1>Feed</h1>
+            <SearchBar />
+            {
+                props.feed.filter(( post:any) => {
+                    console.log(post)
+                    post.title.toLowerCase().includes()
+                })
+            }
             <Link to='/add-post'>Add New Post</Link>
             {props.feed.map((post:any,) => (
                 <div key={post.id}>

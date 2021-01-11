@@ -17,6 +17,7 @@ const BlogPost: React.FC = (props:any) => {
 
     return (
         <div>
+            {props.isLoading ? <div><p>fetching post</p></div> : null}
             <h1>{props.blogPost[0].title}</h1>
             <h2>{props.blogPost[0].username}</h2>
             <p>{props.blogPost[0].content}</p>
