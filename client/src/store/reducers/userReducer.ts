@@ -6,7 +6,7 @@ import {
 } from '../actions/userActions'
 
 const initialState = {
-    user: {},
+    user: [],
     isLoading: false,
     error: ''
 }
@@ -29,7 +29,7 @@ export const userReducer = (state = initialState, action:any) => {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload
+                user: [...state.user, action.payload]
             }
         case POST_USER_FAILURE:
             return {
