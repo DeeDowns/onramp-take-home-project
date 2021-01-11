@@ -1,9 +1,4 @@
 import jwt from 'jsonwebtoken'
-// import { Request, Response, NextFunction } from 'express'
-
-// interface CustomReq extends Request {
-//     user: string
-// }
 
 function authMw( req:any, res:any, next:any) {
     const token = req.headers.authorization
