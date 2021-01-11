@@ -16,8 +16,8 @@ const Favorites: React.FC = (props:any) => {
              {props.favorites &&
                  props.favorites.map((favorite:any) => (
                      <div key={favorite.id}>
-                        <h2>{favorite.title}</h2>
-                        <h3>{favorite.username}</h3>
+                        <h2>Title: {favorite.title}</h2>
+                        <h3>Author:{favorite.username}</h3>
                         <Link to={`/post/${favorite.id}`}>read</Link>
                     </div>
                  ))
