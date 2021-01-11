@@ -38,11 +38,10 @@ const BlogFeed: React.FC = (props:any) => {
                         post.username.toLowerCase().includes(searchInput.toLowerCase())
                     )
                 })
-                .map((post:any,) => (
+                .map((post:any) => (
                 <div key={post.id}>
                     <h2>{post.title}</h2>
                     <h3>{post.username}</h3>
-                    <button>add to favorites</button>
                     <Link to={`/post/${post.id}`}>read</Link>
                 </div>
             ))}

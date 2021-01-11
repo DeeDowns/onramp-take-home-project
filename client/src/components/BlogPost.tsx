@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { fetchBlogPostById  } from '../store/actions/blogFeedActions'
+import {  addToFavorites } from '../store/actions/favoirtesActions'
 
 interface ParamsType {
     id: string
@@ -14,6 +15,11 @@ const BlogPost: React.FC = (props:any) => {
     useEffect(() => {
         props.fetchBlogPostById(id)
     }, [id])
+
+    const handleAddFavorite =  (event:React.MouseEvent) => {
+        event.preventDefault()
+        props.addToFavorites(props.blogPost.id)
+    } 
 
     const handleEdit = (event:React.MouseEvent) => {
         event.preventDefault()
@@ -39,6 +45,7 @@ const BlogPost: React.FC = (props:any) => {
             <h1>{props.blogPost.title}</h1>
             <h2>{props.blogPost.username}</h2>
             <p>{props.blogPost.content}</p>
+            <button onClick={handleAddFavorite}>add to favorites</button>
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
         </div>
@@ -50,9 +57,10 @@ const mapStateToProps = (state: any) => {
     return {
         feed: state.blogFeedReducer.feed,
         blogPost: state.blogFeedReducer.blogPost,
+        favorites: state.favoritesReducer.favorites,
         isLoading: state.blogFeedReducer.isLoading,
         error: state.blogFeedReducer.error
     }
 }
 
-export default connect(mapStateToProps, { fetchBlogPostById })(BlogPost)
+export default connect(mapStateToProps, { fetchBlogPostById, addToFavorites })(BlogPost)
