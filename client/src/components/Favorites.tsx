@@ -3,26 +3,25 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchFavorites, addToFavorites } from '../store/actions/favoirtesActions'
 
-const Favorites: React.FC = (props:any) => {
-    console.log('fdfdfdfjf', props.favorites)
+import { Card, CardTitle, CardSubtitle, CardBody } from 'reactstrap'
 
+const Favorites: React.FC = (props:any) => {
     useEffect(() => {
         props.fetchFavorites()
     }, [])
 
     return (
-        <div>
-             <h2>Favorite Posts</h2>
+        <Card>
              {props.favorites &&
                  props.favorites.map((favorite:any) => (
-                     <div key={favorite.id}>
-                        <h2>Title: {favorite.title}</h2>
-                        <h3>Author:{favorite.username}</h3>
+                     <CardBody key={favorite.id}>
+                        <CardTitle tag='h1'>{favorite.title}</CardTitle>
+                        <CardSubtitle tag='h1'>{favorite.username}</CardSubtitle>
                         <Link to={`/post/${favorite.id}`}>read</Link>
-                    </div>
+                    </CardBody>
                  ))
              }
-        </div>
+        </Card>
        
     )
 }

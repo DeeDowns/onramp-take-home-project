@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
+import { Button } from 'reactstrap'
+
 const Logout: React.FC = () => {
     const history = useHistory()
     const handleLogout = (event:React.MouseEvent) => {
@@ -10,7 +12,7 @@ const Logout: React.FC = () => {
     }
 
     return (
-        <button onClick={handleLogout}>Logout</button>
+        <Button color='primary' onClick={handleLogout}>Logout</Button>
     )
 }
 
