@@ -8,6 +8,7 @@ import Login from './components/Login'
 import BlogFeed from './components/BlogFeed'
 import BlogPost from './components/BlogPost'
 import AddPost from './components/AddPost'
+import EditPost from './components/EditPost'
 import Favorites from './components/Favorites'
 
 const App: React.FC =() => {
@@ -24,12 +25,16 @@ const App: React.FC =() => {
           <Login />
         </Route>
 
+        <Route path='/favorites'>
+          <Favorites />
+        </Route>
+
         <Route path='/add-post'>
           <AddPost />
         </Route>
 
-        <Route path='/favorites'>
-          <Favorites />
+        <Route path='/edit-post/:id'>
+          <EditPost />
         </Route>
 
         <Route path='/post/:id'>

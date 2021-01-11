@@ -25,7 +25,7 @@ const AddPost: React.FC = (props:any) => {
         event.preventDefault()
         console.log(addPostInputs)
         props.createNewBlogPost(addPostInputs)
-        history.push('/')
+        setAddPostInputs(initialAddPostInputs)
         
     }
 
