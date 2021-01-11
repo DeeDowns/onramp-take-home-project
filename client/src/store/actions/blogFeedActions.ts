@@ -32,7 +32,6 @@ export const fetchBlogPostById = (id:number) => (dispatch:Dispatch) => {
     })
 }
 
-
 export const createNewBlogPost = (newPost:any) => (dispatch:Dispatch) => {
     dispatch({ type: FETCH_POST_START})
     axiosWithAuth().post(`/feed`, newPost)
