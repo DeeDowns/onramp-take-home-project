@@ -38,6 +38,7 @@ export const createNewBlogPost = (newPost:any) => (dispatch:Dispatch) => {
     .then((res:any) => {
         console.log(res.data)
         dispatch({ type: POST_NEW_BLOG_POST_SUCCESS, payload: res.data})
+        // window.location.reload(true)
     })
     .catch((err:any) => {
         dispatch({ type: FETCH_POST_FAILURE, payload: err})
