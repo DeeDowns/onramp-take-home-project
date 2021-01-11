@@ -17,6 +17,7 @@ const App: React.FC =() => {
       <NavBar />
 
       <Switch>
+      
         <Route path='/register'>
           <Register />
         </Route>

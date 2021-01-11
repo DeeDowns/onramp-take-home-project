@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 import { createNewBlogPost } from '../store/actions/blogFeedActions'
 
+import {  Form, FormGroup, Label, Input, Button, Col } from 'reactstrap'
+
 const initialAddPostInputs = {
     title: '',
     content: ''
@@ -30,30 +32,42 @@ const AddPost: React.FC = (props:any) => {
     }
 
     return (
-        <form onSubmit={handleAddSubmit}>
-            <label htmlFor='title'>
+        <Form onSubmit={handleAddSubmit} className='add-edit-form'>
+            <FormGroup>
+            <Label  className='title-wrapper' htmlFor='title'>
                 Blog Title
-                <input 
+                <Col md={20}>
+                <Input 
                     type='text'
                     name='title'
                     value={addPostInputs.title}
                     onChange={handleAddChange}
                 />
-            </label>
+                </Col>
+            </Label>
+            </FormGroup>
+            
 
             {/* Author */}
             {/* Date */}
-
-            <label htmlFor='content'>
+            <FormGroup >
+            <Label className='content-wrapper' htmlFor='content'>
                 Content
-                <textarea 
+                <Col lg={20}>
+                <Input 
+                    style={{ height: '450px'}}
+                    type='textarea'
                     name='content'
                     value={addPostInputs.content}
                     onChange={handleAddChange}
                 />
-            </label>
-        <button>Add Post</button>
-        </form>
+                 </Col>
+            </Label>
+           
+            </FormGroup>
+           
+        <Button color='primary'>Add Post</Button>
+        </Form>
     ) 
 }
 

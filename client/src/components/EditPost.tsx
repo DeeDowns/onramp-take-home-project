@@ -3,11 +3,14 @@ import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { fetchBlogPostById }  from '../store/actions/blogFeedActions'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+
+
+import {  Form, FormGroup, Label, Input, Button, Col } from 'reactstrap'
+
 const initialEditInputs = {
     title: '',
     content: ''
 }
-
 
 interface ParamsType {
     id: string
@@ -16,7 +19,6 @@ interface ParamsType {
 const EditPost: React.FC = (props:any) => {
     const [editPostInputs, setEditPostInputs] = useState<{title:string | number | readonly string[] | undefined; content:string | number | readonly string[] | undefined}>(initialEditInputs)
     const { id } = useParams<ParamsType>()
-    const history = useHistory()
 
     useEffect(() => {
        axiosWithAuth().get(`/feed/${id}`)
@@ -52,30 +54,41 @@ const EditPost: React.FC = (props:any) => {
     }
 
     return (
-        <form onSubmit={handleEditSubmit}>
-            <label htmlFor='title'>
+        <Form onSubmit={handleEditSubmit} className='add-edit-form'>
+            <FormGroup>
+            <Label className='title-wrapper' htmlFor='title'>
                 Blog Title
-                <input 
+                <Col md={20}>
+                <Input 
                     type='text'
                     name='title'
                     value={editPostInputs.title}
                     onChange={handleEditChange}
                 />
-            </label>
+                </Col>
+            </Label>
+            </FormGroup>
 
             {/* Author */}
             {/* Date */}
 
-            <label htmlFor='content'>
+            <FormGroup>
+            <Label className='content-wrapper' htmlFor='content'>
                 Content
-                <textarea 
+                <Col lg={20}>
+                <Input 
+                    style={{ height: '450px'}}
+                    type='textarea'
                     name='content'
                     value={editPostInputs.content}
                     onChange={handleEditChange}
                 />
-            </label>
-        <button>Edit Post</button>
-        </form>
+                </Col>
+            </Label>
+            </FormGroup>
+
+        <Button color='primary'>Edit Post</Button>
+        </Form>
     )
 }
 

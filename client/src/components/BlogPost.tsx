@@ -5,6 +5,11 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { fetchBlogPostById  } from '../store/actions/blogFeedActions'
 import {  addToFavorites } from '../store/actions/favoirtesActions'
 
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button, ButtonGroup
+  } from 'reactstrap';
+
 interface ParamsType {
     id: string
 }
@@ -40,15 +45,19 @@ const BlogPost: React.FC = (props:any) => {
     } 
 
     return (
-        <div>
-            {props.isLoading ? <div><p>fetching post</p></div> : null}
-            <h1>{props.blogPost.title}</h1>
-            <h2>{props.blogPost.username}</h2>
-            <p>{props.blogPost.content}</p>
-            <button onClick={handleAddFavorite}>add to favorites</button>
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-        </div>
+        <Card className='blog-post-container'>
+            {props.isLoading ? <CardBody><p>fetching post</p></CardBody> : null}
+            <CardBody>
+            <CardTitle tag='h1'>{props.blogPost.title}</CardTitle>
+            <CardSubtitle tag='h2'>{props.blogPost.username}</CardSubtitle>
+            <CardText tag='p'>{props.blogPost.content}</CardText>
+            <div className='btn-container'>
+                <Button color='primary' onClick={handleAddFavorite}>Favorite</Button>
+                <Button color='primary' onClick={handleEdit}>Edit</Button>
+                <Button color='primary' onClick={handleDelete}>Delete</Button>
+            </div>
+            </CardBody>
+        </Card>
     )
 }
 

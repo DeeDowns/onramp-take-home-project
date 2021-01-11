@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userLogin } from '../store/actions/userActions'
 
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 const initialCredInputs = {
     username: '',
     password: ''
@@ -26,28 +28,32 @@ const Login: React.FC = (props:any) =>  {
         history.push('/')
     }
     return (
-        <form onSubmit={handleLoginSubmit}>
-            <label htmlFor='username'>
+        <Form onSubmit={handleLoginSubmit}>
+            <FormGroup>
+            <Label htmlFor='username'>
                 Username
-                <input 
+                <Input 
                     type='text'
                     name='username'
                     value={credInputs.username}
                     onChange={handleCredChange}
                 />
-            </label>
+            </Label>
+            </FormGroup>
 
-            <label htmlFor='password'>
+            <FormGroup>
+            <Label htmlFor='password'>
                 Password
-                <input 
+                <Input 
                     type='password'
                     name='password'
                     value={credInputs.password}
                     onChange={handleCredChange}
                 />
-            </label>
-            <button>Sign-in</button>
-        </form>
+            </Label>
+            </FormGroup>
+            <Button color='primary'>Sign-in</Button>
+        </Form>
     )
 
 }
