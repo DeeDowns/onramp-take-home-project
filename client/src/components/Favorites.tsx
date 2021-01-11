@@ -13,7 +13,7 @@ const Favorites: React.FC = (props:any) => {
     return (
         <div>
              <h2>Favorite Posts</h2>
-             {
+             {props.favorites &&
                  props.favorites.map((favorite:any) => (
                      <div key={favorite.id}>
                         <h2>{favorite.title}</h2>
