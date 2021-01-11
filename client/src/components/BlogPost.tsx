@@ -13,23 +13,23 @@ const BlogPost: React.FC = (props:any) => {
         props.fetchBlogPostById(id)
     }, [id])
 
-    console.log('BLOG-POST-PROPS',props.blogPost[0])
+    console.log('BLOG-POST-PROPS',props.blogPost.title)
 
     return (
         <div>
             {props.isLoading ? <div><p>fetching post</p></div> : null}
-            <h1>{props.blogPost[0].title}</h1>
-            <h2>{props.blogPost[0].username}</h2>
-            <p>{props.blogPost[0].content}</p>
+            <h1>{props.blogPost.title}</h1>
+            <h2>{props.blogPost.username}</h2>
+            <p>{props.blogPost.content}</p>
         </div>
     )
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
+    console.log('STAT',state.blogFeedReducer.blogPost[0])
     return {
         feed: state.blogFeedReducer.feed,
-        blogPost: state.blogFeedReducer.blogPost,
+        blogPost: state.blogFeedReducer.blogPost[0],
         isLoading: state.blogFeedReducer.isLoading,
         error: state.blogFeedReducer.error
     }
