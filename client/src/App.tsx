@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
 
+import PrivateRoute from './components/PrivateRoute'
 import NavBar from './components/NavBar'
 import Register from './components/Register'
 import Login from './components/Login'
@@ -26,25 +27,25 @@ const App: React.FC =() => {
           <Login />
         </Route>
 
-        <Route path='/favorites'>
+        <PrivateRoute path='/favorites'>
           <Favorites />
-        </Route>
+        </PrivateRoute>
 
-        <Route path='/add-post'>
+        <PrivateRoute path='/add-post'>
           <AddPost />
-        </Route>
+        </PrivateRoute>
 
-        <Route path='/edit-post/:id'>
+        <PrivateRoute path='/edit-post/:id'>
           <EditPost />
-        </Route>
+        </PrivateRoute>
 
-        <Route path='/post/:id'>
+        <PrivateRoute path='/post/:id'>
           <BlogPost />
-        </Route>
+        </PrivateRoute>
 
-        <Route path='/'>
+        <PrivateRoute exact path='/'>
           <BlogFeed />
-        </Route>
+        </PrivateRoute>
 
       </Switch>
     </div>

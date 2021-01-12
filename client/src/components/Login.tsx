@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userLogin } from '../store/actions/userActions'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 
 const initialCredInputs = {
     username: '',
@@ -21,14 +23,20 @@ const Login: React.FC = (props:any) =>  {
         })
     }
 
-    const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const login = (event: React.FormEvent<HTMLFormElement>) =>  {
         event.preventDefault()
-        props.userLogin(credInputs)
-        setCredInputs(initialCredInputs)
-        history.push('/')
+        axiosWithAuth().post(`/login`, credInputs)
+        .then((res:any) => {
+            console.log(res.data)
+            localStorage.setItem('token', res.data.token)
+            history.push('/')
+        })
+        .catch((err:any) => {
+            console.log(err)
+        })
     }
     return (
-        <Form onSubmit={handleLoginSubmit}>
+        <Form onSubmit={login}>
             <FormGroup>
             <Label htmlFor='username'>
                 Username
