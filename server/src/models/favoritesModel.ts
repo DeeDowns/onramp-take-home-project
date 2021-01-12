@@ -13,3 +13,9 @@ export function addToFavorites(postId: any, userId:any) {
    return  db('favorite')
     .insert({'postId': postId, 'userId': userId})
 }
+
+export function deleteFavorite(id:any) {
+    return db('favorite')
+    .where({ 'favorite.postId': id })
+    .del()
+}
