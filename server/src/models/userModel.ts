@@ -1,11 +1,11 @@
 import db from '../db'
 
 export function createNewUser(user:any) {
-    return db('user')
+    return db('users')
     .insert(user, 'id')
 }
 
 export function findUser(username:any) {
-    return db('user')
+    return db('users')
     .where( 'username', username)
 }

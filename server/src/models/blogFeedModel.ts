@@ -1,37 +1,37 @@
 import db from '../db'
 
 export function getAllPosts() {
-    return db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.id', 'post.title', 'post.content', 'user.username')
+    return db('posts')
+    .join('users', 'users.id', 'posts.userId')
+    .select('posts.id', 'posts.title', 'posts.content', 'users.username')
     .orderBy('id', 'desc')
 } 
 
 export function findPostById(id:any) {
-    return db('post')
-    .join('user', 'user.id', 'post.userId')
-    .select('post.id', 'post.title', 'post.content', 'user.username')
-    .where({ 'post.id': id})
+    return db('posts')
+    .join('users', 'users.id', 'posts.userId')
+    .select('posts.id', 'posts.title', 'posts.content', 'users.username')
+    .where({ 'posts.id': id})
     .first()
 }
 
 export function addNewPost(newPost:any) {
-    return db('post')
+    return db('posts')
     .insert(newPost, ['id'])
     // .then((['id']) => {
-    //     return findPostById(id)
+    //     return findPostsById(id)
     // })
 } 
 
 export function editPost(id:any, changes:any) {
-    return db('post')
+    return db('posts')
     .where({ id })
     .update(changes)
 }
 
 export function deletePost(id:any) {
-   return db('post')
-    .where({ 'post.id': id })
+   return db('posts')
+    .where({ 'posts.id': id })
     .del()
 }
 
