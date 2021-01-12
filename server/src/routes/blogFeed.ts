@@ -1,6 +1,7 @@
 
 import { Router,  Request, Response } from 'express' 
 import {getAllPosts, findPostById,addNewPost, editPost, deletePost } from '../models/blogFeedModel'
+import { deleteFavorite } from '../models/favoritesModel'
 import authMw from '../middleware/authMw'
 
 const router = Router()
@@ -65,16 +66,24 @@ router.put('/:id', authMw, (req: any, res: any) => {
 
 router.delete('/:id', authMw, (req:any, res: any) => {
     const { id } = req.params
-    deletePost(id)
-    .then((delCount:number) => {
-        console.log(delCount)
-        if (delCount > 0) {
-            res.status(200).json({ message: 'post deleted' })
-        }
+    deleteFavorite(id)
+    .then((thing:any) => {
+        console.log(thing)
+        deletePost(id)
+        .then((delCount:number) => {
+            console.log(delCount)
+            if (delCount > 0) {
+                res.status(200).json({ message: 'post deleted' })
+            }
+        })
+        .catch((err:any) => {
+            console.log(err)
+        })
     })
     .catch((err:any) => {
         console.log(err)
     })
+    
 })
 
 

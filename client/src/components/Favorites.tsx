@@ -16,7 +16,7 @@ const Favorites: React.FC = (props:any) => {
                  props.favorites.map((favorite:any) => (
                      <CardBody key={favorite.id}>
                         <CardTitle tag='h1'>{favorite.title}</CardTitle>
-                        <CardSubtitle tag='h1'>{favorite.username}</CardSubtitle>
+                        {/* <CardSubtitle tag='h1'>{favorite.username}</CardSubtitle> */}
                         <Link to={`/post/${favorite.id}`}>read</Link>
                     </CardBody>
                  ))
