@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchBlogPosts, fetchBlogPostById, createNewBlogPost } from '../store/actions/blogFeedActions'
 
-import { Card, CardTitle, CardSubtitle, CardBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardBody, Form, Button, Label, Input } from 'reactstrap';
 
 const BlogFeed: React.FC = (props:any) => {
     const [searchInput, setSearchInput] = useState<string>('')
+    // const [addFav, setAddFaves] = useState<any>([])
+    // const [toggleFav, setToggleFav] = useState<boolean>(false)
+    // console.log('fff',addFav, 'togle',toggleFav)
+    
     
     useEffect(() => {
         props.fetchBlogPosts()
@@ -16,6 +20,11 @@ const BlogFeed: React.FC = (props:any) => {
         setSearchInput(event.currentTarget.value) 
         console.log(searchInput) 
     }
+
+    // const handleClick = (event:React.MouseEvent, id:any) => {
+    //     event.preventDefault()
+    //    console.log(props.)
+    // } 
    
     return (
         <div className='feed-container'>
@@ -44,6 +53,23 @@ const BlogFeed: React.FC = (props:any) => {
                     <CardTitle tag='h1'>{post.title}</CardTitle>
                     <CardSubtitle tag='h2'>posted by: {post.username}</CardSubtitle>
                     <Link to={`/post/${post.id}`}>read</Link>
+                    {/* <Button className='testbtn' active onClick={() => {
+                        setToggleFav(!toggleFav)
+                        console.log(addFav.indexOf(post))
+                        if (toggleFav === true) {
+                            addFav.map((fav:any) => {
+                                if (fav.id === post.id) {
+                                    addFav.splice(addFav.indexOf(post))
+                                }
+                            })
+                        }
+                        else {
+                            setAddFaves([...addFav, post])
+                        }
+                       
+                    }}>
+                        add</Button> */}
+        
                     </CardBody>
                 </Card>
             ))}

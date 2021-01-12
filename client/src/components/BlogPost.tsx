@@ -13,6 +13,7 @@ import {
 interface ParamsType {
     id: string
 }
+
 const BlogPost: React.FC = (props:any) => {
     const { id } = useParams<ParamsType>()
     const history = useHistory()
