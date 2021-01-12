@@ -25,7 +25,6 @@ const AddPost: React.FC = (props:any) => {
 
     const handleAddSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(addPostInputs)
         props.createNewBlogPost(addPostInputs)
         setAddPostInputs(initialAddPostInputs)
         
