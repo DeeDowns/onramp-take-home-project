@@ -6,7 +6,7 @@ import { fetchBlogPostById  } from '../store/actions/blogFeedActions'
 import {  addToFavorites } from '../store/actions/favoirtesActions'
 
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button, ButtonGroup
   } from 'reactstrap';
 
