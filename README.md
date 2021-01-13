@@ -1,48 +1,48 @@
 # Onramp FullStack Take Home Project
 
 ## **User Flow**
-Register: 
+Register: The starting point, this is where a user to creates an account
 ![alt text][register]
 
 [register]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:register.png "/register screenshot"
 
-Login: 
+Login: The user is then redirected to login. If the user clicks the logout button in the top right corner of the screen, they are redirected back to this page.
 ![alt text][login]
 
 [login]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:login.png "/login screenshot"
 
-View Feed: 
+View Feed: After a successful login the user is redirected to the blog feed, a view of all blog posts from all users
 ![alt text][feed]
 
 [feed]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:feed.png "/feed screenshot"
 
-View a Post: 
+View a Post: The user can choose to read any post by clicking the "read" link under each post 
 ![alt text][post-id]
 
 [post-id]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id.png "/post/:id screenshot"
 
-Add a Post: 
+Add a Post: From the /feed page the user can create a new post bt clicking Add Post, the link redirects them to a form where they can add a blog title and write content
 ![alt text][add-post]
 
 [add-post]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:add-post.png  "/add-post screenshot"
 
-Edit a Post: 
+Edit a Post: When viewing a post, the user can choose to edit the post, they are redirected to a pre-populated form so they can update the content
 ![alt text][edit-post]
 
 [edit-post]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:edit-post-id.png  "/edit-post/:id screenshot"
 
-View an Edited Post: 
+View an Edited Post: After submitting the changes, the user is redirected to the feed, where they can see the updated post (to view updated content, the user has to click on the "read" link)
 ![alt text][post-id-edit]
 
-[post-id-edit]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id-edit.png  "edited post screenshot"
+[post-id-edit]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id-edited  "edited post screenshot"
 
 
-View Favorites (empty): 
+View Favorites (empty): From the /feed page the user can click Favorites to view their favorited posts. Ff they dont have any favorites they see this view
 ![alt text][favorites-empty]
 
 [favorites-empty]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:favorites-empty.png  "/favorites screenshot empty view"
 
-View Favorites: 
+View Favorites: Once they have favorites they see this view
 ![alt text][favorites]
 
 [favorites]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:favorites.png  "/favorites screenshot"
@@ -114,6 +114,7 @@ View Favorites:
 ---
 
 ## **Architectural Design Pattern**
+I chose to implement Redux to structure my app, with the store, the view, and the connection between the two. The redux store holds the data/state needed by the view/the components that render the data. The connection between the two is what gets the data to the components, with mapStateToProps. I chose this so that the data was readily avaiable to any componenet that needed it. 
     
 
 
