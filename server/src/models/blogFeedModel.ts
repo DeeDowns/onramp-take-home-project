@@ -18,9 +18,6 @@ export function findPostById(id:any) {
 export function addNewPost(newPost:any) {
     return db('posts')
     .insert(newPost, ['id'])
-    // .then((['id']) => {
-    //     return findPostsById(id)
-    // })
 } 
 
 export function editPost(id:any, changes:any) {

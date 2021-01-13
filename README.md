@@ -57,44 +57,30 @@ View Favorites:
 * Server: The blogFeedModel.ts file handles the database queries, specifcally findPostById() queries the Posts database table to find and return the specified post by id. The blogFeed.ts in the server/src/routes folder implements the endpoint and CRUD request, specifically the GET to /'feed'/:id request handles the client request find and send back the specified blog post.
 
 ### 6. Update a post
-  * Where:
-        Client:
-            > test
-        Server: 
-            > test
-  * How:
+* Client: A form is implemented in EditPost.tsx component, with an axios call to GET a specified post by id, useState hook is used to set the input fields with the response data. The handleSubmit() function sends a PUT request to the back end via axios to update and save the edited post.
+           
+* Server: The blogFeedModel.ts file handles the database queries, specifcally editPost() queries the Posts database table to update the specified post by id. The blogFeed.ts in the server/src/routes folder implements the endpoint and CRUD request, specifically the PUT to /'feed'/:id request handles the request to update the specified blog post with the changes sent by the client.
 
 ### 7. Delete a post
-  * Where:
-        Client:
-            > test
-        Server: 
-            > test
-  * How:
+* Client: A handleDelete() function is implemented in BlogPost.tsx component, with an axios call to the endpoint to DELETE a specified post by id.
+           
+* Server: The blogFeedModel.ts file handles the database queries, specifcally deletePost() queries the Posts database table to delete the specified post by id. The blogFeed.ts in the server/src/routes folder implements the endpoint and CRUD request, specifically the DELETE to /'feed'/:id request handles the client request remove the specified blog post. This request also deletes the post from the Favorites database table, so that any other user's favorites can't have a post thats been removed. 
 
 ### 8. Search for a blog post
-  * Where:
-        Client:
-            > test
-        Server: 
-            > test
-  * How:
+* Client: A form is implemented in BlogFeed.tsx component for the search bar. The state is handled by useState hook and as the user types the state is updated via the handleSearchInputChange functiion. With all of the blog posts rendered on the page, a filter() method is applied to the posts on the title and username properties. The title and username strings and the search input string  are turned to lowercase to easily compare them and if either the title or username includes the input string as it is being typed out those posts will be filtered to show the matches.  
 
 ### 9. Favorite one or more blog posts at the same time
-  * Where:
-        Client:
-            > test
-        Server: 
-            > test
-  * How:
+* Client: The fetchFavorites() function from the favoritesActions.ts, makes an endpoint call to render a users favorite posts in Favorites.tsx. 
+           
+* Server: The favoritesModel.ts file handles the database queries, specifcally addToFavorites() queries the Favorites database table to insert the post's and user's ids. The favorites.ts in the server/src/routes folder implements the endpoint and CRUD request, specifically the POST /favorites/:id request handles the client request add a post favorites and based on the post id.
+
+* TODO - Improvements: I did created functionality to add a single post at a time, instead of multiple at one time, but with more time I would implement a user being able to click on multiple post and those posts sent as the request body in the form of an array objects [{postId, userId}, ...], to then be inserted into the multiple rows of the Favorites table
+
 
 ### 10. View all user favorites
-  * Where:
-        Client:
-            > test
-        Server: 
-            > test
-  * How:
+* Client: The fetchFavorites() function from the favoritesActions.ts, makes an endpoint call to render a users favorite posts in Favorites.tsx. 
+
+* Server: The favoritesModel.ts file handles the database queries, specifcally getFavorites() queries the Favorites database table, while also joining the Users and Posts tables, to grab a user's favorite posts and order them by most recent to older. The favorites.ts in the server/src/routes folder implements the endpoint and CRUD request, specifically the GET /favorites/ request handles the client request fetch all of a users favorites and send that information back to the client.
 
 ---
 
