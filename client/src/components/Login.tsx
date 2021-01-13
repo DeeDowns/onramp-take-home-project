@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { userLogin } from '../store/actions/userActions'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 const initialCredInputs = {
@@ -59,7 +59,9 @@ const Login: React.FC = (props:any) =>  {
                 />
             </Label>
             </FormGroup>
-            <Button color='primary'>Sign-in</Button>
+            <Button color='primary'>Sign-In</Button>
+            <FormText>New?</FormText>
+            <Button color='primary' onClick={() => history.push('/register')}>Sign-Up</Button>
         </Form>
     )
 

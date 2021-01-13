@@ -46,7 +46,7 @@ const BlogPost: React.FC = (props:any) => {
             {props.isLoading ? <CardBody><p>fetching post</p></CardBody> : null}
             <CardBody>
             <CardTitle tag='h1'>{props.blogPost.title}</CardTitle>
-            <CardSubtitle tag='h2'>{props.blogPost.username}</CardSubtitle>
+            <CardSubtitle tag='h2'> by: {props.blogPost.username}</CardSubtitle>
             <CardText tag='p'>{props.blogPost.content}</CardText>
             <div className='btn-container'>
                 <Button color='primary' onClick={handleAddFavorite}>Favorite</Button>

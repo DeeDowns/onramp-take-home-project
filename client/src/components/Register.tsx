@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerNewUser } from '../store/actions/userActions'
 
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 const initialRegInputs = {
     username: '',
@@ -68,6 +68,8 @@ const Register: React.FC = (props:any) =>  {
             </Label>
             </FormGroup>
             <Button color='primary'>Sign-Up</Button>
+            <FormText>Already Have an Account?</FormText>
+            <Button color='primary' onClick={() => history.push('/login')}>Sign-In</Button>
         </Form>
     )
 
