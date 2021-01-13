@@ -7,7 +7,7 @@ const Logout: React.FC = () => {
     const history = useHistory()
     const handleLogout = (event:React.MouseEvent) => {
         event.preventDefault()
-        localStorage.removeItem('token')
+        localStorage.setItem('token', '')
         history.push('/login')
     }
 
