@@ -1,6 +1,5 @@
 // import users from '../routes/users'
 import app from '../app'
-// import db from '../db'
 const supertest = require('supertest')
 
 describe('/', () => {
