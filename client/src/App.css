@@ -10,6 +10,7 @@ nav {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 3%;
 
 }
 
@@ -32,6 +33,11 @@ nav .nav-links-container a {
 
 nav .nav-links-container a:hover {
   text-transform: uppercase;
+}
+
+nav button {
+  align-self:flex-end;
+  margin: 0 2%;
 }
 
 .feed-container {

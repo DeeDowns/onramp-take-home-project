@@ -10,11 +10,9 @@ export const fetchFavorites = () => (dispatch: Dispatch) => {
     dispatch({ type: FETCH_FAVORITES_START })
     axiosWithAuth().get('/favorites')
     .then(res => {
-        console.log(res.data)
         dispatch({ type: FETCH_FAVORITES_SUCCESS, payload: res.data })
     })
     .catch(err => {
-        console.log(err)
         dispatch({ type: FETCH_FAVORITES_FAILURE, payload: err })
     })
 }
@@ -23,11 +21,9 @@ export const addToFavorites = (id:any) => (dispatch: Dispatch) => {
     dispatch({ type: FETCH_FAVORITES_SUCCESS })
     axiosWithAuth().post(`/favorites/${id}`)
     .then(res => {
-        console.log(res.data)
         dispatch({ type: POST_TO_FAVS_SUCCESS, payload: res.data })
     })
     .catch(err => {
-        console.log(err)
         dispatch({ type: FETCH_FAVORITES_FAILURE, payload: err })
     })
 }

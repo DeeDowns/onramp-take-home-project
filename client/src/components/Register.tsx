@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerNewUser } from '../store/actions/userActions'
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const initialRegInputs = {
     username: '',
@@ -26,10 +26,10 @@ const Register: React.FC = (props:any) =>  {
         event.preventDefault()
         props.registerNewUser(regInputs)
         history.push('/login') 
-        setRegInputs(initialRegInputs)
-        
+        setRegInputs(initialRegInputs) 
 
     }
+
     return (
         <Form onSubmit={handleRegSubmit}>
             <FormGroup>
@@ -74,7 +74,6 @@ const Register: React.FC = (props:any) =>  {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
     return {
         user: state.userReducer.user,
         isLoading: state.userReducer.isLoading,

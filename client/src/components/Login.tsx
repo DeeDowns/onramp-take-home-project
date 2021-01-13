@@ -27,13 +27,12 @@ const Login: React.FC = (props:any) =>  {
         event.preventDefault()
         axiosWithAuth().post(`/login`, credInputs)
         .then((res:any) => {
-            console.log(res.data)
             localStorage.setItem('token', res.data.token)
-            history.push('/')
         })
         .catch((err:any) => {
             console.log(err)
         })
+        history.push('/')
     }
     return (
         <Form onSubmit={login}>
@@ -67,7 +66,6 @@ const Login: React.FC = (props:any) =>  {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
     return {
         user: state.userReducer.user,
         isLoading: state.userReducer.isLoading,

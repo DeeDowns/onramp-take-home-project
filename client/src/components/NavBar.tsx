@@ -3,12 +3,9 @@ import { connect } from 'react-redux'
 import NavLinks from './NavLinks'
 import Logout from './Logout'
 
-const NavBar: React.FC = (props:any) => {
-    // console.log('NAV',props.user[0])
+const NavBar: React.FC = () => {
     return (
         <nav>
-            {
-            props.user[0] ? <p>{props.user[0].message}</p> : <p>Welcome</p>}
             <Logout />
             <NavLinks />
         </nav>

@@ -27,6 +27,7 @@ const AddPost: React.FC = (props:any) => {
         event.preventDefault()
         props.createNewBlogPost(addPostInputs)
         setAddPostInputs(initialAddPostInputs)
+        history.push('/')
         
     }
 
@@ -46,9 +47,6 @@ const AddPost: React.FC = (props:any) => {
             </Label>
             </FormGroup>
             
-
-            {/* Author */}
-            {/* Date */}
             <FormGroup >
             <Label className='content-wrapper' htmlFor='content'>
                 Content
@@ -62,7 +60,6 @@ const AddPost: React.FC = (props:any) => {
                 />
                  </Col>
             </Label>
-           
             </FormGroup>
            
         <Button color='primary'>Add Post</Button>
@@ -71,7 +68,6 @@ const AddPost: React.FC = (props:any) => {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
     return {
         feed: state.blogFeedReducer.feed,
         blogPost: state.blogFeedReducer.blogPost,

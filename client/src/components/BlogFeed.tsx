@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchBlogPosts, fetchBlogPostById, createNewBlogPost } from '../store/actions/blogFeedActions'
 
-import { Card, CardTitle, CardSubtitle, CardBody, Form, Button, Label, Input } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardBody, Form, Label, Input } from 'reactstrap';
 
 const BlogFeed: React.FC = (props:any) => {
     const [searchInput, setSearchInput] = useState<any>('')
     
-
     useEffect(() => {
         props.fetchBlogPosts()
     }, [])
 
     const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchInput(event.currentTarget.value.toLowerCase()) 
+        setSearchInput(event.currentTarget.value) 
         console.log(searchInput) 
     }
    
@@ -32,9 +31,6 @@ const BlogFeed: React.FC = (props:any) => {
                     />
                 </Label>
             </Form>
-            {
-                props.isLoading ? <p>fetching posts...</p> : null 
-            }
             {props.feed &&
                 props.feed.filter(( post:any) => {
                     return (
@@ -48,7 +44,6 @@ const BlogFeed: React.FC = (props:any) => {
                     <CardTitle tag='h1'>{post.title}</CardTitle>
                     <CardSubtitle tag='h2'>posted by: {post.username}</CardSubtitle>
                     <Link to={`/post/${post.id}`}>read</Link>
-        
                     </CardBody>
                 </Card>
             ))}
@@ -57,7 +52,6 @@ const BlogFeed: React.FC = (props:any) => {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
     return {
         feed: state.blogFeedReducer.feed,
         blogPost: state.blogFeedReducer.blogPost,

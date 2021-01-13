@@ -10,7 +10,6 @@ export const registerNewUser = (newPost:any) => (dispatch:Dispatch) => {
     dispatch({ type: POST_USER_START})
     axiosWithAuth().post(`/users`, newPost)
     .then((res:any) => {
-        console.log(res.data)
         dispatch({ type: POST_USER_REGISTER_SUCCESS, payload: res.data})
     })
     .catch((err:any) => {
@@ -22,12 +21,10 @@ export const userLogin = (newPost:any) => (dispatch:Dispatch) => {
     dispatch({ type: POST_USER_START})
     axiosWithAuth().post(`/login`, newPost)
     .then((res:any) => {
-        console.log(res.data)
         localStorage.setItem('token', res.data.token)
         dispatch({ type: POST_USER_LOGIN_SUCCESS, payload: res.data})
     })
     .catch((err:any) => {
-        console.log(err)
         dispatch({ type: POST_USER_FAILURE, payload: err})
     })
 }

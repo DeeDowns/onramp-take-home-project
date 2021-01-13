@@ -17,13 +17,13 @@ interface ParamsType {
 }
 
 const EditPost: React.FC = (props:any) => {
-    const [editPostInputs, setEditPostInputs] = useState<{title:string | number | readonly string[] | undefined; content:string | number | readonly string[] | undefined}>(initialEditInputs)
+    const [editPostInputs, setEditPostInputs] = useState<{title: string, content: string}>(initialEditInputs)
     const { id } = useParams<ParamsType>()
+    const history = useHistory()
 
     useEffect(() => {
        axiosWithAuth().get(`/feed/${id}`)
        .then((res:any) => {
-        console.log('edit',res.data)
         setEditPostInputs(res.data)
     })
     .catch((err:any) => {
@@ -40,17 +40,14 @@ const EditPost: React.FC = (props:any) => {
 
     const handleEditSubmit =  (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(editPostInputs)
         axiosWithAuth().put(`/feed/${id}`, editPostInputs)
             .then((res:any) => {
             console.log('edit',res)
         })
-    .catch((err:any) => {
+        .catch((err:any) => {
         console.log(err)
-    })
-        // setEditPostInputs(initialEditInputs)
-        // history.push('/')
-        
+        })
+        history.push('/')  
     }
 
     return (
@@ -68,9 +65,6 @@ const EditPost: React.FC = (props:any) => {
                 </Col>
             </Label>
             </FormGroup>
-
-            {/* Author */}
-            {/* Date */}
 
             <FormGroup>
             <Label className='content-wrapper' htmlFor='content'>
@@ -93,7 +87,6 @@ const EditPost: React.FC = (props:any) => {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log(state)
     return {
         feed: state.blogFeedReducer.feed,
         blogPost: state.blogFeedReducer.blogPost,

@@ -6,9 +6,7 @@ import { fetchBlogPostById  } from '../store/actions/blogFeedActions'
 import {  addToFavorites } from '../store/actions/favoirtesActions'
 
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, ButtonGroup
-  } from 'reactstrap';
+    Card, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 interface ParamsType {
     id: string
@@ -34,10 +32,8 @@ const BlogPost: React.FC = (props:any) => {
 
     const handleDelete = (event:React.MouseEvent) => {
         event.preventDefault()
-        event.preventDefault()
         axiosWithAuth().delete(`/feed/${id}`)
         .then(res => {
-          console.log(res)
           history.push('/')
         })
         .catch(err => {
@@ -63,7 +59,6 @@ const BlogPost: React.FC = (props:any) => {
 }
 
 const mapStateToProps = (state: any) => {
-    console.log('STAT',state.blogFeedReducer.blogPost)
     return {
         feed: state.blogFeedReducer.feed,
         blogPost: state.blogFeedReducer.blogPost,
