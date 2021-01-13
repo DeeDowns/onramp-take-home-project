@@ -4,12 +4,12 @@
 Register: 
 ![alt text][screenshot]
 
-[logo]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:register.png "/feed screenshot"
+[logo]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:register.png "/register screenshot"
 
 Login: 
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[logo]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:login.png?raw=true "/login"
 
 Feed: 
 ![alt text][logo]
