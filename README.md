@@ -2,30 +2,50 @@
 
 ## **User Flow**
 Register: 
-![alt text][screenshot]
+![alt text][register]
 
-[logo]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:register.png "/register screenshot"
+[register]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:register.png "/register screenshot"
 
 Login: 
-![alt text][logo]
+![alt text][login]
 
-[logo]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:login.png?raw=true "/login"
+[login]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:login.png "/login screenshot"
 
-Feed: 
-![alt text][logo]
+View Feed: 
+![alt text][feed]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[feed]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:feed.png "/feed screenshot"
 
-Add Post: 
-![alt text][logo]
+View a Post: 
+![alt text][post-id]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[post-id]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id.png "/post/:id screenshot"
 
+Add a Post: 
+![alt text][add-post]
+
+[add-post]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:add-post.png  "/add-post screenshot"
+
+Edit a Post: 
+![alt text][edit-post]
+
+[edit-post]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:edit-post-id.png  "/edit-post/:id screenshot"
+
+View an Edited Post: 
+![alt text][post-id-edit]
+
+[post-id-edit]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id-edit.png  "edited post screenshot"
+
+
+View Favorites (empty): 
+![alt text][favorites-empty]
+
+[favorites-empty]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:favorites-empty.png  "/favorites screenshot empty view"
 
 View Favorites: 
-![alt text][logo]
+![alt text][favorites]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[favorites]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:favorites.png  "/favorites screenshot"
 
 ---
 
