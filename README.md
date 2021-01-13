@@ -85,6 +85,11 @@ View Favorites:
 ---
 
 ## **Best Practices**
+* Though I am new to Typescript, kept strict configuration as a default and tried my best to work with Typing. It is definitely something that will take more exposure to get a better understanding, but the experience has been challanging and rewarding to attempt pick up the language so quicky and build something with it. Where I could, I provided the nessecary typing, definitely an area for growth. 
+
+* I also attempted to abstract out as much of the code as I could. For example, in the server/src/routes files, I initially had the database queries in the route requests themselves, but later decided it would be best to create models to handle to queries and just import them into the routes. This greatly imporves the readability of the code and keeps it looking neat and uncluttered. With more time, I could dive even deeper in modulizing the code. 
+
+* I wanted to keep the file structure simple and easy to navigate, so splitting the client and the server into separate files. Then in the client having folders for components, and redux store, and utils, justs keeps everything neat. 
 
 ---
 
