@@ -22,6 +22,17 @@
 
 `npm run test` to run tests with jest
 
+## **Planning Artifacts**
+Simple Wireframing
+![alt text][wireframe]
+
+[wireframe]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/wireframes.png "wireframes screenshot"
+
+Database Schema Design
+![alt text][db-schema]
+
+[db-schema]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/db-schema.png "database schema design screenshot"
+
 ## **User Flow**
 Register: The starting point, this is where a user to creates an account
 ![alt text][register]
