@@ -2,16 +2,22 @@
 
 ## **Getting started: the Front End**
 `npm install`
+
 `npm start` to start localhost
 
 ## **Getting started the Back End**
 `npm install`
+
 `npm run server` to start the development server
 
 `psql postgres` to open up postgres in the command line
-`createdb blogdb`
+
+`createdb blogdb` to create database
+
 `\c blogdb` to connect the database
+
 `\d` to view all the tables
+
 `\d table-name` to see a specific table
 
 `npm run test` to run tests with jest
