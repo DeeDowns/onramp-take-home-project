@@ -37,11 +37,6 @@ View an Edited Post: After submitting the changes, the user is redirected to the
 [post-id-edit]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:post-id-edited  "edited post screenshot"
 
 
-View Favorites (empty): From the /feed page the user can click Favorites to view their favorited posts. Ff they dont have any favorites they see this view
-![alt text][favorites-empty]
-
-[favorites-empty]: https://github.com/DeeDowns/onramp-take-home-project/blob/main/client/public/screenshots/:favorites-empty.png  "/favorites screenshot empty view"
-
 View Favorites: Once they have favorites they see this view
 ![alt text][favorites]
 

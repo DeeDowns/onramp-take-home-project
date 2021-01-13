@@ -13,9 +13,6 @@ const Favorites: React.FC = (props:any) => {
 
     return (
         <Card>
-             {
-            props.favorites.length === 0 ? <h1>You have no favorites</h1> : null
-            }
              {props.favorites &&
                  props.favorites.map((favorite:any) => (
                      <CardBody key={favorite.id}>
