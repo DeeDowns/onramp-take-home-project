@@ -20,6 +20,8 @@
 
 `\d table-name` to see a specific table
 
+`knex migrate:latest --knexfile knexfile.ts` to run table migrations
+
 `npm run test` to run tests with jest
 
 ## **Planning Artifacts**
